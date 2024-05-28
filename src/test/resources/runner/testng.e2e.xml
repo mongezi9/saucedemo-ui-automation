@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test name="Test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+
+        <classes>
+            <class name="com.saucedemo.e2e.EndToEndTest"/>
+        </classes>
+
+    </test>
+</suite>
