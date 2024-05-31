@@ -8,11 +8,14 @@ Feature: Login feature
         Then I should see "<result>"
 
         Examples:
-            | username                | password     | result                    |
-            | standard_user           | secret_sauce | success                   |
-            | problem_user            | secret_sauce | success                   |
-            | performance_glitch_user | secret_sauce | success                   |
-            | invalid_user            | secret_sauce | error message "Username and password do not match any user in this service" |
-            | standard_user           | wrong_pass   | error message "Username and password do not match any user in this service" |
-            |                        | secret_sauce | error message "Username is required" |
-            | standard_user           |              | error message "Password is required" |
+            | username                | password     | result                                                      |
+            | standard_user           | secret_sauce | success                                                     |
+            | problem_user            | secret_sauce | success                                                     |
+            | performance_glitch_user | secret_sauce | success                                                     |
+            | error_user              | secret_sauce | success                                                     |
+            | visual_user             | secret_sauce | success                                                     |
+            | invalid_user            | secret_sauce | Username and password do not match any user in this service |
+            | standard_user           | wrong_pass   | Username and password do not match any user in this service |
+            |                         | secret_sauce | Username is required                                        |
+            | standard_user           |              | Password is required                                        |
+            | locked_out_user         | secret_sauce | Sorry, this user has been locked out.                       |
