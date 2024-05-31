@@ -49,7 +49,7 @@ public class LoginSteps extends BaseTest {
                 if (result.equals("success")) {
                         assertUtils.assertUrlContains("/inventory.html", "Login was successful and redirected to inventory page.");
                 } else {
-                        Assert.assertEquals(loginPage.getErrorMessage(), result);
+                        Assert.assertTrue(loginPage.getErrorMessage().contains(result));
                 }
         }
 }

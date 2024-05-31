@@ -22,7 +22,6 @@ public class BaseTest {
     }
 
     public void setUp() {
-
         if (browser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/com/saucedemo/chromedriver");
             driver = new ChromeDriver();
