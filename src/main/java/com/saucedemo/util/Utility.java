@@ -23,7 +23,7 @@ public class Utility {
 		prop = new Properties();
 
 		try {
-			FileInputStream file = new FileInputStream("src/main/resources/com/qa/config/config.properties");
+			FileInputStream file = new FileInputStream("src/main/resources/com/saucedemo/config.properties");
 			prop.load(file);
 		} catch (FileNotFoundException e) {
 
@@ -32,6 +32,10 @@ public class Utility {
 
 			e.printStackTrace();
 		}
+	}
+
+	public String getProperty(String key) {
+		return prop.getProperty(key);
 	}
 
 	public void waitFor(WebElement locator) {

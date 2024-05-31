@@ -18,7 +18,11 @@ saucedemo-ui-automation/
 │   ├── test/
 │   │   ├── java/
 │   │   │   └── com/saucedemo/tests/
+│   │   │       ├── runners/
+│   │   │       └── steps/
 │   │   └── resources/
+│   │       └── features/
+│   │           └── example.feature
 ├── pom.xml
 ├── JenkinsFile
 ├── README.md

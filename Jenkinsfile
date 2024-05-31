@@ -18,27 +18,22 @@ pipeline {
         stage('Run Test') {
             steps {
                 script {
-                    def testSuite = ''
-                    if (params.TEST_SUITE == 'login') {
-                        testSuite = 'src/test/resources/runner/testng.login.xml'
-                    } else if (params.TEST_SUITE == 'endtoend') {
-                        testSuite = 'src/test/resources/runner/testng.e2e.xml'
+                    sh "mvn clean test -DsuiteXmlFile=src/test/resources/runner/testng.ci.xml"
+                }
+            }
+        }
+
+         stage('Report') {
+                    steps {
+                        publishHTML(target: [
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: 'target/cucumber-reports',
+                            reportFiles: 'index.html',
+                            reportName: 'Cucumber HTML Report'
+                        ])
                     }
-
-                    sh "mvn clean test -DsuiteXmlFile=${testSuite} -Dbrowser=chrome -Durl=https://www.saucedemo.com/"
-                }
-            }
-        }
-
-        stage('Publish Reports') {
-            steps {
-                sh 'echo Generating TestNG Report'
-            }
-            post {
-                always {
-                    step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
-                }
-            }
-        }
+         }
     }
 }
